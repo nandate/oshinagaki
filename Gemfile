@@ -36,6 +36,8 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'whenever', :require => false
+
 gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
