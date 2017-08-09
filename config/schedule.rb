@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 set :output, 'log/crontab.log'
 
-every 1.minute do
-  command "echo 'mossmossmossmossmossmoss'"
+every 1.hour do
+  runner "Tasks::Test.test"
 end
