@@ -32,9 +32,14 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'bootstrap-sass'
+
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+gem 'whenever', :require => false
+gem 'fastimage'
 
 gem 'dotenv-rails'
 # Use Capistrano for deployment
