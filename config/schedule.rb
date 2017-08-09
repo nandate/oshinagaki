@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 set :output, 'log/crontab.log'
 
-every 1.hour do
+every 1.hours do
   runner "Tasks::Test.test"
 end
