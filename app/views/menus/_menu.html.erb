@@ -5,7 +5,17 @@
     </div>
     <div class="panel-body">
       <span><%= menu.content %></span>
-      <%= image_tag menu.image_url,class:"img-responsive" %>
+      <%= image_tag menu.image_url,class:"img-responsive",id: "image-#{menu.id}" ,:data => { :target => "#myModal-#{menu.id}", :toggle => "modal"} %>
     </div>
   </li>
+</div>
+
+<div class="modal fade" id="myModal-<%= menu.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= image_tag menu.image_url, class:"img-responsive"%>
+      </div>
+    </div>
+  </div>
 </div>
