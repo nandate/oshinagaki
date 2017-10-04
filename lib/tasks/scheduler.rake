@@ -22,10 +22,15 @@ end
 
 def crawl_tweet(client)
   @user = User.all
-  puts @user
   @user.each do |user|
-    tweets = client.home_timeline
-    puts user.nickname
+    friend_list = client.friends(user.nickname)
+    read_timeline(friend_list, client)
+  end
+end
+
+def read_timeline(friend_list, client)
+  friend_list.each do |friend|
+    tweets = client.user_timeline(friend.screen_name)
     puts tweets
   end
 end
