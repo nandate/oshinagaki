@@ -3,7 +3,7 @@ desc "This task is called by the Heroku scheduler add-on"
 require 'twitter'
 
 task :tweet => :environment do
-  puts "Getting twitter..."
+  puts "Getting tweets..."
   client = get_twitter_client
   crawl_tweet(client)
   puts "done."
@@ -21,16 +21,32 @@ def get_twitter_client
 end
 
 def crawl_tweet(client)
-  @user = User.all
-  @user.each do |user|
+  users = User.all
+  users.each do |user|
     friend_list = client.friends(user.nickname)
-    read_timeline(friend_list, client)
+    tweets = read_timeline(friend_list, client, user)
   end
 end
 
-def read_timeline(friend_list, client)
+def read_timeline(friend_list, client, user)
   friend_list.each do |friend|
     tweets = client.user_timeline(friend.screen_name)
-    puts tweets
+    discern_tweet(tweets, user)
+  end
+end
+
+def discern_tweet(tweets, user)
+  pattern = /(お品書き|おしながき|お品がき|おしな書き)/
+  now_time = Time.now
+  tweets.each do |tweet|
+    tweet.media.flat_map do |m|
+      case m
+      when Twitter::Media::Photo
+        if pattern =~ tweet.text && now_time - tweet.created_at < 60 * 60
+          puts tweet.created_at
+          user.menus.create(content: tweet.text,author: tweet.user.name,image_url: m.media_url.to_s)
+        end
+      end
+    end
   end
 end
