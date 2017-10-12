@@ -10,11 +10,20 @@ task :tweet => :environment do
 end
 
 def get_twitter_client
+
+=begin
   config = {
     :consumer_key => ENV['TWITTER_KEY'],
     :consumer_secret => ENV['TWITTER_SECRET'],
     :access_token => ENV['TWITTER_ACCESS_TOKEN'],
     :access_token_secret => ENV['TWITTER_ACCESS_TOKEN_SECRET']
+  }
+=end
+  config = {
+    :consumer_key => Rails.application.secrets.twitter_key,
+    :consumer_secret => Rails.application.secrets.twitter_secret,
+    :access_token => Rails.application.secrets.twitter_access_token,
+    :access_token_secret => Rails.application.secrets.twitter_access_token_secret
   }
   client = Twitter::REST::Client.new(config)
   client
