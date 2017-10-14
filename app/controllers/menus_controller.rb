@@ -10,11 +10,12 @@ class MenusController < ApplicationController
   end
 
   def destroy
+    
   end
 
   private
-  def menu_params
-    params.require(:menu).permit(:content,:image_url,:author)
-  end
+    def menu_params
+      params.require(:menu).permit(:content,:image_url,:author)
+    end
 
 end
