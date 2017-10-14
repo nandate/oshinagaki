@@ -10,15 +10,6 @@ task :tweet => :environment do
 end
 
 def get_twitter_client
-
-=begin
-  config = {
-    :consumer_key => ENV['TWITTER_KEY'],
-    :consumer_secret => ENV['TWITTER_SECRET'],
-    :access_token => ENV['TWITTER_ACCESS_TOKEN'],
-    :access_token_secret => ENV['TWITTER_ACCESS_TOKEN_SECRET']
-  }
-=end
   config = {
     :consumer_key => Rails.application.secrets.twitter_key,
     :consumer_secret => Rails.application.secrets.twitter_secret,
@@ -52,6 +43,7 @@ def discern_tweet(tweets, user)
       case m
       when Twitter::Media::Photo
         if pattern =~ tweet.text && now_time - tweet.created_at < 60 * 60
+          puts tweet.text
           puts tweet.created_at
           user.menus.create(content: tweet.text,author: tweet.user.name,image_url: m.media_url.to_s)
         end
