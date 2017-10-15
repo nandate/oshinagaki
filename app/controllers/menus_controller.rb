@@ -10,7 +10,9 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+    render :json => { :menu => @menu }
   end
 
   private

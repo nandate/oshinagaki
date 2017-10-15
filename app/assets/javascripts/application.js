@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+ $('a[data-method="delete"]').on('ajax:success', function(xhr,data,status) {
+    $('#menu_'+data.menu.id).fadeOut();
+ });
+});
