@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :menus, dependent: :destroy
-  
+
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]
@@ -12,4 +12,9 @@ class User < ApplicationRecord
       user.image_url = image_url
     end
   end
+
+  def feed
+    Menu.where("user_id=?",id)
+  end
+
 end

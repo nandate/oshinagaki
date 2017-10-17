@@ -1,1 +1,7 @@
+<% if @feed_items.try(:any?) %>
+  <ul>
+    <%= render @feed_items %>
+  </ul>
+<% else %>
 
+<% end %>

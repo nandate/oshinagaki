@@ -5,6 +5,7 @@ class MenusController < ApplicationController
     if @menu.save
       render json: @menu, status: 201
     else
+      @feed_items = []
       render json: @menu.errors, status: 422
     end
   end
