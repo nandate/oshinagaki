@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only:[:show]
-  resources :menus, only:[:create,:destroy]
-
+  resources :menus, only:[:create, :destroy]
+  resources :estimates, only:[:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -4,13 +4,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @estimate = Estimate.new
   end
 
   private
     def logged_in_user
       unless logged_in?
         store_location
-        redirect_to login_url
+        redirect_to root_url
       end
     end
 
