@@ -1,5 +1,9 @@
 class EstimatesController < ApplicationController
 
+  def show
+    @estimate = Estimate.find(params[:id])
+  end
+
   def create
     @estimate = current_user.estimates.build(estimate_params)
     if @estimate.save

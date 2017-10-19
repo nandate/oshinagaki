@@ -15,7 +15,11 @@ class User < ApplicationRecord
   end
 
   def feed
-    Menu.where("user_id=?",id)
+    Menu.where("user_id=?", id)
+  end
+
+  def estimates_feed
+    Estimate.where("user_id=?", id)
   end
 
 end

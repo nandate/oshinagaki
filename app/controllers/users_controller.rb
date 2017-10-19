@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @estimate = Estimate.new
+    @estimate = current_user.estimates.build
+    @estimates_feed = current_user.estimates_feed
   end
 
   private

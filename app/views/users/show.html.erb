@@ -1,6 +1,18 @@
-<%= @user.nickname %>
-<%= image_tag @user.image_url %>
-<%= @user.menus.count %>
+<div class="low">
+  <div class="col-md-4">
+    <selection>
+      <%= @user.nickname %>
+      <%= image_tag @user.image_url%>
+      <%= @user.menus.count %>
+    </section>
+    <section>
+      <h3>予算の追加</h3>
+      <%= render 'estimates/estimate_form' %>
+    </section>
+  </div>
+</div>
 
-<%= @user.estimates %>
-<%= render 'estimates/estimate_form' %>
+<div class="col-md-8">
+  <h1>予算一覧</h1>
+  <%= render @estimates_feed %>
+</div>
