@@ -1,4 +1,8 @@
 class MenusController < ApplicationController
+  def show
+    @menu = Menu.find(params[:id])
+  end
+  
   def create
     user = User.find(params[:id])
     @menu = user.menus.create(menu_params)
