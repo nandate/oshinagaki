@@ -1,7 +1,7 @@
 <div id="menu_<%=menu.id%>" class="col-md-4">
   <li class="panel panel-default">
     <div class="panel panel-heading">
-      <span><%= menu.author %></span>
+      <%= link_to menu.author, menu ,class: "link_black"%>
       <%= link_to menu, method: :delete, data: { confirm: "削除しますか?"}, remote: true  do %>
         <span class="glyphicon glyphicon-trash pull-right"></span>
       <% end %>
@@ -9,6 +9,7 @@
     <div class="panel-body">
       <span><%= menu.content %></span>
       <%= image_tag menu.image_url,class:"img-responsive",id: "image-#{menu.id}" ,:data => { :target => "#myModal-#{menu.id}", :toggle => "modal"} %>
+
     </div>
   </li>
 
@@ -21,6 +22,5 @@
       </div>
     </div>
   </div>
-
 
 </div>

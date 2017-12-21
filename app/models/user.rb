@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :menus, dependent: :destroy
+  has_many :estimates, dependent: :destroy
 
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
@@ -14,7 +15,11 @@ class User < ApplicationRecord
   end
 
   def feed
-    Menu.where("user_id=?",id)
+    Menu.where("user_id=?", id)
+  end
+
+  def estimates_feed
+    Estimate.where("user_id=?", id)
   end
 
 end

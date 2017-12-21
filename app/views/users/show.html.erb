@@ -1,3 +1,19 @@
-<%= @user.nickname %>
-<%= image_tag @user.image_url %>
-<%= @user.menus.count %>
+<div class="low">
+  <div class="col-md-4">
+    <selection>
+      <%= @user.nickname %>
+      <%= image_tag @user.image_url%>
+      <%= @user.menus.count %>
+    </section>
+    <section>
+      <%= link_to 'New Product',new_estimate_path, remote: true %>
+    </section>
+  </div>
+</div>
+
+<div class="col-md-8">
+  <h1>予算一覧</h1>
+  <%= render @estimates_feed %>
+</div>
+
+<div id="estimate-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

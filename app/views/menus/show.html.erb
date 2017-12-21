@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="text-center"><%= @menu.author %></h1>
+  <p class="text-center"><%= @menu.content %></p>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @menu.image_url,class:"img-responsive" %>
+    </div>
+    <div class="col-md-6">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>投稿者</td>
+            <td><%= @menu.author %></td>
+          </tr>
+
+          <tr>
+            <td>イベント名</td>
+            <td>c91</td>
+          </tr>
+
+          <tr>
+            <td>場所</td>
+            <td>東1A</td>
+          </tr>
+          <tr>
+            <td>予算</td>
+            <td>新刊セット1000円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
